@@ -9,7 +9,7 @@ const moviesRoutes: Router = Router()
 
 moviesRoutes.post("", movieNameExist, validDataMovieMiddleware(movieSchema), createMovieController)
 moviesRoutes.get("", listAllMoviesController)
-moviesRoutes.patch("/:id", movieIdExist, validDataMovieMiddleware(updateMovieSchema), updateMovieController)
+moviesRoutes.patch("/:id", movieIdExist, movieNameExist, validDataMovieMiddleware(updateMovieSchema), updateMovieController)
 moviesRoutes.delete("/:id", movieIdExist, deleteMovieController)
 
 
