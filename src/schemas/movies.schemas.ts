@@ -1,22 +1,23 @@
 import { z } from "zod"
 
-const createMovieSchema = z.object({
-    name: z.string().max(50),
-    description: z.string().optional(),
+const movieSchema = z.object({
+    name: z.string().max(50).min(3),
+    description: z.string().nullable().optional(),
     duration: z.number(),
     price: z.number()
 })
 
-const returnMovieSchema = createMovieSchema.extend({
+const returnMovieSchema = movieSchema.extend({
     id: z.number()
 })
 
-
 const allMoviesSchemas = z.array(returnMovieSchema)
 
+const updateMovieSchema = movieSchema.partial()
 
 export {
-    createMovieSchema,
+    movieSchema,
     returnMovieSchema,
-    allMoviesSchemas
+    allMoviesSchemas,
+    updateMovieSchema
 }
