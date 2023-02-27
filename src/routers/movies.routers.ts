@@ -3,13 +3,13 @@ import { createMovieController, deleteMovieController, listAllMoviesController, 
 import { validDataMovieMiddleware } from "../middlewares/ensureDatavalid.middlewares"
 import movieIdExist from "../middlewares/movieIdExist.middlewares"
 import movieNameExist from "../middlewares/movieNameExist.middlewares"
-import { movieSchema, updateMovieSchema } from "../schemas/movies.schemas"
+import { movieCreateSchema, updateMovieSchema } from "../schemas/movie.schemas"
 
 const moviesRoutes: Router = Router()
 
-moviesRoutes.post("", movieNameExist, validDataMovieMiddleware(movieSchema), createMovieController)
+moviesRoutes.post("", validDataMovieMiddleware(movieCreateSchema), movieNameExist, createMovieController)
 moviesRoutes.get("", listAllMoviesController)
-moviesRoutes.patch("/:id", movieIdExist, movieNameExist, validDataMovieMiddleware(updateMovieSchema), updateMovieController)
+moviesRoutes.patch("/:id", validDataMovieMiddleware(updateMovieSchema), movieIdExist, movieNameExist, updateMovieController)
 moviesRoutes.delete("/:id", movieIdExist, deleteMovieController)
 
 

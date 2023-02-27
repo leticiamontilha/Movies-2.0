@@ -15,7 +15,7 @@ const movieIdExist = async (request: Request, response: Response, next: NextFunc
     })
     
     if(!findMovieExist){
-        throw new AppError("Movie not find", 404)
+        throw new AppError("Movie not found", 404)
     }
 
     return next()

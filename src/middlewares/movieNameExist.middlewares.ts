@@ -15,7 +15,7 @@ const movieNameExist = async (request: Request, response: Response, next: NextFu
     })
     
     if(findMovieExist){
-        throw new AppError("Movie already exists", 409)
+        throw new AppError("Movie already exists.", 409)
     }
 
     return next()
