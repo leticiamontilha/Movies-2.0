@@ -10,9 +10,7 @@ const createMovieController = async (request: Request, response: Response) => {
 
     const newMovie = await createMovieService(userData)
 
-    return response.status(201).json({
-        newMovie
-    })
+    return response.status(201).json(newMovie)
 }
 
 const listAllMoviesController = async (request: Request, response:Response) =>{

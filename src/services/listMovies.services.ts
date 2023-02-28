@@ -26,9 +26,13 @@ const listAllMoviesService = async (page: any, perPage:any, order:any, sort:any)
     } else {
         newSort = 'id'
     }
+
+    if(!sort){
+        newOrder = 'ASC'
+    }
     
     const findMovies= await movieRepository.find({
-        skip: newPage * (newPage - 1),
+        skip: newPerPage * (newPage - 1),
         take: newPerPage,
         order:{ 
             [newSort]: newOrder 
